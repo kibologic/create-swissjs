@@ -1,0 +1,126 @@
+import { SwissComponent } from '@kibologic/core';
+import { Navbar } from '../components/Navbar.uix';
+import { Footer } from '../components/Footer.uix';
+import { Button } from '../components/Button.uix';
+
+component AboutPage {
+  render() {
+    return (
+      <div style="min-height: 100vh; display: flex; flex-direction: column; background: #0a0a1a; color: #e5e7eb;">
+        <Navbar />
+
+        <main style="flex: 1; padding: 64px 24px; max-width: 720px; margin: 0 auto; width: 100%;">
+          <h1 style="font-size: 42px; font-weight: 900; letter-spacing: -0.04em; color: #fff; margin-bottom: 12px;">
+            {'About SwissJS'}
+          </h1>
+          <p style="font-size: 16px; color: #9ca3af; line-height: 1.7; margin-bottom: 48px;">
+            {'SwissJS is a component framework for building fast, reactive web UIs with a minimal API and full TypeScript support.'}
+          </p>
+
+          <div style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
+            <h2 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em;">
+              {'Component syntax'}
+            </h2>
+            <pre style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 8px; padding: 20px; font-size: 13px; color: #a5b4fc; overflow-x: auto; line-height: 1.7;"><code>{`import { SwissComponent } from '@kibologic/core';
+
+component Counter {
+  state { let count: number = 0; }
+
+  _inc() {
+    this.count += 1;
+    this.scheduleUpdate();
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.count}</p>
+        <button onclick={() => this._inc()}>
+          Increment
+        </button>
+      </div>
+    );
+  }
+}`}</code></pre>
+          </div>
+
+          <div style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
+            <h2 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em;">
+              {'Key rules'}
+            </h2>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0; margin-top: 2px;">{'•'}</span>
+                {'Use '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'component X { }'}</code>
+                {' — never export class syntax'}
+              </li>
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0; margin-top: 2px;">{'•'}</span>
+                {'Always import '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'SwissComponent'}</code>
+                {' from @kibologic/core in every .uix file'}
+              </li>
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0; margin-top: 2px;">{'•'}</span>
+                {'JSX only inside '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'render()'}</code>
+                {' — not in helper methods'}
+              </li>
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0; margin-top: 2px;">{'•'}</span>
+                {'Helper methods use the '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'_method()'}</code>
+                {' naming convention'}
+              </li>
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0; margin-top: 2px;">{'•'}</span>
+                {'Call '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'this.scheduleUpdate()'}</code>
+                {' after mutating state in methods'}
+              </li>
+            </ul>
+          </div>
+
+          <div style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 12px; padding: 28px; margin-bottom: 40px;">
+            <h2 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em;">
+              {'Next steps'}
+            </h2>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0;">{'1.'}</span>
+                {'Edit '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'app/pages/HomePage.uix'}</code>
+                {' to build your landing page'}
+              </li>
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0;">{'2.'}</span>
+                {'Add new pages in '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'app/pages/'}</code>
+                {' and wire them in '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'app/main.ui'}</code>
+              </li>
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0;">{'3.'}</span>
+                {'Add shared UI to '}
+                <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'app/components/'}</code>
+              </li>
+              <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
+                <span style="color: #4f8ef7; flex-shrink: 0;">{'4.'}</span>
+                {'Read the full docs at '}
+                <a href="https://swissjs.org/docs" target="_blank" style="color: #4f8ef7; text-decoration: none; font-weight: 600;">{'swissjs.org/docs'}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <Button label="Documentation" onclick={() => window.open('https://swissjs.org/docs', '_blank')} variant="primary" />
+            <Button label="GitHub" onclick={() => window.open('https://github.com/kibologic/swissjs', '_blank')} variant="secondary" />
+          </div>
+        </main>
+
+        <Footer />
+      </div>
+    );
+  }
+}

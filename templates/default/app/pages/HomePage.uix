@@ -1,0 +1,98 @@
+import { SwissComponent } from '@kibologic/core';
+import { Navbar } from '../components/Navbar.uix';
+import { Footer } from '../components/Footer.uix';
+import { Button } from '../components/Button.uix';
+
+component HomePage {
+  state { let count: number = 0; }
+
+  _increment() {
+    this.count += 1;
+    this.scheduleUpdate();
+  }
+
+  _decrement() {
+    this.count -= 1;
+    this.scheduleUpdate();
+  }
+
+  render() {
+    return (
+      <div style="min-height: 100vh; display: flex; flex-direction: column; background: #0a0a1a; color: #e5e7eb;">
+        <Navbar />
+
+        <main style="flex: 1;">
+          <section style="padding: 96px 24px 80px; text-align: center; max-width: 760px; margin: 0 auto;">
+            <div style="display: inline-block; background: rgba(79,142,247,0.12); border: 1px solid rgba(79,142,247,0.3); border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 700; color: #4f8ef7; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px;">
+              {'Built with SwissJS'}
+            </div>
+            <h1 style="font-size: clamp(36px, 6vw, 64px); font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 20px; color: #fff;">
+              {'Welcome to '}
+              <span style="color: #4f8ef7;">{'PROJECT_NAME'}</span>
+            </h1>
+            <p style="font-size: 18px; color: #9ca3af; line-height: 1.7; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto;">
+              {'Your SwissJS app is ready. Edit '}
+              <code style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 4px; padding: 2px 7px; font-size: 14px; color: #c4b5fd;">{'app/pages/HomePage.uix'}</code>
+              {' to get started.'}
+            </p>
+            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+              <Button label="View Docs" onclick={() => window.open('https://swissjs.org/docs', '_blank')} variant="primary" />
+              <Button label="About" onclick={() => history.pushState(null, '', '/about')} variant="secondary" />
+            </div>
+          </section>
+
+          <section style="padding: 0 24px 80px; max-width: 960px; margin: 0 auto;">
+            <h2 style="font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 48px; color: #fff; letter-spacing: -0.03em;">
+              {'Why SwissJS?'}
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+              <div style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 12px; padding: 28px;">
+                <div style="font-size: 28px; margin-bottom: 14px;">{'⚡'}</div>
+                <h3 style="font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px;">{'Fast by default'}</h3>
+                <p style="font-size: 14px; color: #9ca3af; line-height: 1.6;">{'Fine-grained reactivity with zero virtual DOM overhead. Only the exact DOM nodes that changed get updated.'}</p>
+              </div>
+              <div style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 12px; padding: 28px;">
+                <div style="font-size: 28px; margin-bottom: 14px;">{'🧩'}</div>
+                <h3 style="font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px;">{'Component-first'}</h3>
+                <p style="font-size: 14px; color: #9ca3af; line-height: 1.6;">{'Declare components with a clean, minimal syntax. No boilerplate, no config — just write your UI and ship.'}</p>
+              </div>
+              <div style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 12px; padding: 28px;">
+                <div style="font-size: 28px; margin-bottom: 14px;">{'🔒'}</div>
+                <h3 style="font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px;">{'Type-safe'}</h3>
+                <p style="font-size: 14px; color: #9ca3af; line-height: 1.6;">{'Full TypeScript in your templates. Props, state, and events are all inferred — catch bugs before they reach production.'}</p>
+              </div>
+            </div>
+          </section>
+
+          <section style="padding: 0 24px 96px; max-width: 480px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.03em;">
+              {'Reactive counter'}
+            </h2>
+            <p style="font-size: 14px; color: #6b7280; margin-bottom: 32px;">{'Live demo of SwissJS state reactivity.'}</p>
+            <div style="background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 16px; padding: 40px 32px;">
+              <div style="font-size: 72px; font-weight: 900; color: #4f8ef7; letter-spacing: -0.05em; line-height: 1; margin-bottom: 32px;">
+                {this.count}
+              </div>
+              <div style="display: flex; gap: 12px; justify-content: center;">
+                <button
+                  onclick={() => this._decrement()}
+                  style="width: 48px; height: 48px; border-radius: 50%; background: #2d2d4e; border: none; color: #e5e7eb; font-size: 22px; cursor: pointer; font-weight: 700; transition: background 0.15s;"
+                  onmouseover={(e: any) => e.currentTarget.style.background = '#3d3d6e'}
+                  onmouseout={(e: any) => e.currentTarget.style.background = '#2d2d4e'}
+                >{'-'}</button>
+                <button
+                  onclick={() => this._increment()}
+                  style="width: 48px; height: 48px; border-radius: 50%; background: #4f8ef7; border: none; color: #fff; font-size: 22px; cursor: pointer; font-weight: 700; transition: opacity 0.15s;"
+                  onmouseover={(e: any) => e.currentTarget.style.opacity = '0.85'}
+                  onmouseout={(e: any) => e.currentTarget.style.opacity = '1'}
+                >{'+'}</button>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <Footer />
+      </div>
+    );
+  }
+}

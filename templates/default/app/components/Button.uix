@@ -1,0 +1,32 @@
+import { SwissComponent } from '@kibologic/core';
+
+component Button {
+  props {
+    label: string;
+    onclick: () => void;
+    variant: string;
+  }
+
+  _getStyle() {
+    const base = 'display: inline-flex; align-items: center; justify-content: center; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; border: none; transition: opacity 0.2s, transform 0.1s; letter-spacing: 0.01em;';
+    if (this.variant === 'secondary') {
+      return base + ' background: transparent; color: #4f8ef7; border: 2px solid #4f8ef7;';
+    }
+    return base + ' background: #4f8ef7; color: #fff;';
+  }
+
+  render() {
+    return (
+      <button
+        style={this._getStyle()}
+        onclick={this.onclick}
+        onmouseover={(e: any) => e.currentTarget.style.opacity = '0.85'}
+        onmouseout={(e: any) => e.currentTarget.style.opacity = '1'}
+        onmousedown={(e: any) => e.currentTarget.style.transform = 'scale(0.97)'}
+        onmouseup={(e: any) => e.currentTarget.style.transform = 'scale(1)'}
+      >
+        {this.label}
+      </button>
+    );
+  }
+}

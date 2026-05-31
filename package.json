@@ -1,0 +1,23 @@
+{
+  "name": "create-swissjs",
+  "version": "0.1.0",
+  "description": "Scaffold a new SwissJS application",
+  "type": "module",
+  "bin": {
+    "create-swissjs": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "templates"
+  ],
+  "keywords": [
+    "swissjs",
+    "scaffold",
+    "create",
+    "kibologic"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

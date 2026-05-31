@@ -1,0 +1,37 @@
+import { mount, SwissComponent, createElement, Fragment } from '@kibologic/core';
+import { HomePage } from './pages/HomePage.uix';
+import { AboutPage } from './pages/AboutPage.uix';
+
+globalThis.createElement = createElement;
+globalThis.Fragment = Fragment;
+
+import { Signal } from '@kibologic/core';
+const route$ = new Signal(window.location.pathname);
+
+window.addEventListener('popstate', () => {
+  route$.value = window.location.pathname;
+  window.scrollTo(0, 0);
+});
+
+document.addEventListener('click', (e: any) => {
+  const link = e.target.closest('a');
+  if (link && link.href && link.href.startsWith(window.location.origin) && !link.target && !e.metaKey && !e.ctrlKey) {
+    const path = link.getAttribute('href');
+    if (path && path.startsWith('/') && !path.includes('#')) {
+      e.preventDefault();
+      history.pushState(null, '', path);
+      route$.value = path;
+      window.scrollTo(0, 0);
+    }
+  }
+});
+
+component Router {
+  render() {
+    const r = route$.value;
+    if (r === '/about') return <AboutPage />;
+    return <HomePage />;
+  }
+}
+
+mount(Router, document.getElementById('app'));

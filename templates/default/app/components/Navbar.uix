@@ -1,0 +1,32 @@
+import { SwissComponent } from '@kibologic/core';
+
+component Navbar {
+  state { let mobileOpen: boolean = false; }
+
+  _toggleMobile() {
+    this.mobileOpen = !this.mobileOpen;
+    this.scheduleUpdate();
+  }
+
+  render() {
+    return (
+      <nav style="background: #1a1a2e; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #2d2d4e;">
+        <a href="/" style="font-size: 20px; font-weight: 900; color: #4f8ef7; text-decoration: none; letter-spacing: -0.04em;">PROJECT_NAME</a>
+        <div style="display: flex; gap: 24px; align-items: center;">
+          <a
+            href="/"
+            style="font-size: 14px; font-weight: 600; color: #9ca3af; text-decoration: none; transition: color 0.2s;"
+            onmouseover={(e: any) => e.target.style.color = '#fff'}
+            onmouseout={(e: any) => e.target.style.color = '#9ca3af'}
+          >Home</a>
+          <a
+            href="/about"
+            style="font-size: 14px; font-weight: 600; color: #9ca3af; text-decoration: none; transition: color 0.2s;"
+            onmouseover={(e: any) => e.target.style.color = '#fff'}
+            onmouseout={(e: any) => e.target.style.color = '#9ca3af'}
+          >About</a>
+        </div>
+      </nav>
+    );
+  }
+}
