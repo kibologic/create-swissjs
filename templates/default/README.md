@@ -35,7 +35,7 @@ PROJECT_NAME/
 Components live in `.uix` files. Every file must import `SwissComponent`:
 
 ```js
-import { SwissComponent } from '@kibologic/core';
+import { SwissComponent } from '@swissjs/core';
 
 component MyComponent {
   state { let count: number = 0; }
@@ -58,7 +58,7 @@ component MyComponent {
 
 **Key rules:**
 - Use `component X { }` — never `export class X extends SwissComponent`
-- Import `SwissComponent` from `@kibologic/core` in every `.uix` file
+- Import `SwissComponent` from `@swissjs/core` in every `.uix` file
 - JSX only inside `render()` — not in helper methods
 - Helper methods use `_method()` naming convention
 - Call `this.scheduleUpdate()` after mutating state in methods

@@ -1,11 +1,11 @@
-import { mount, SwissComponent, createElement, Fragment } from '@kibologic/core';
+import { mount, SwissComponent, createElement, Fragment } from '@swissjs/core';
 import { HomePage } from './pages/HomePage.uix';
 import { AboutPage } from './pages/AboutPage.uix';
 
 globalThis.createElement = createElement;
 globalThis.Fragment = Fragment;
 
-import { Signal } from '@kibologic/core';
+import { Signal } from '@swissjs/core';
 const route$ = new Signal(window.location.pathname);
 
 window.addEventListener('popstate', () => {

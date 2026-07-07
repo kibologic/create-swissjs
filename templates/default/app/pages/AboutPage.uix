@@ -1,4 +1,4 @@
-import { SwissComponent } from '@kibologic/core';
+import { SwissComponent } from '@swissjs/core';
 import { Navbar } from '../components/Navbar.uix';
 import { Footer } from '../components/Footer.uix';
 import { Button } from '../components/Button.uix';
@@ -21,7 +21,7 @@ component AboutPage {
             <h2 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em;">
               {'Component syntax'}
             </h2>
-            <pre style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 8px; padding: 20px; font-size: 13px; color: #a5b4fc; overflow-x: auto; line-height: 1.7;"><code>{`import { SwissComponent } from '@kibologic/core';
+            <pre style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 8px; padding: 20px; font-size: 13px; color: #a5b4fc; overflow-x: auto; line-height: 1.7;"><code>{`import { SwissComponent } from '@swissjs/core';
 
 component Counter {
   state { let count: number = 0; }
@@ -59,7 +59,7 @@ component Counter {
                 <span style="color: #4f8ef7; flex-shrink: 0; margin-top: 2px;">{'•'}</span>
                 {'Always import '}
                 <code style="background: #0d0d1f; border: 1px solid #2d2d4e; border-radius: 4px; padding: 1px 6px; font-size: 13px; color: #c4b5fd;">{'SwissComponent'}</code>
-                {' from @kibologic/core in every .uix file'}
+                {' from @swissjs/core in every .uix file'}
               </li>
               <li style="font-size: 14px; color: #9ca3af; display: flex; gap: 10px; align-items: flex-start;">
                 <span style="color: #4f8ef7; flex-shrink: 0; margin-top: 2px;">{'•'}</span>
